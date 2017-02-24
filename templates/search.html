@@ -1,0 +1,22 @@
+<ion-header-bar align-title="center" class="bgc-orange bar bar-header">
+    <div class="buttons">
+        <button class="button button-icon ion-ios-arrow-left" ng-click="$ionicGoBack()">
+        </button>
+    </div>
+    <input ng-model="tag" class="tab-search" auto-focus-when="focus" placeholder="请输入搜索关键词" ng-model="searchInput">
+    <i class="icon ion-ios-search tab-search-cur"></i>
+    <i class="icon ion-close-circled tab-search-close-cur" ng-click="delete()"></i>
+    <a class="tab-cancel-btn" ng-click="search()">搜索</a>
+</ion-header-bar>
+<ion-view>
+    <ion-content>
+        <div class="card" style="margin-top: 10px;margin-bottom:0px;" ng-repeat="item in dataArr">
+            <a class="item item-thumbnail-left" href="#">
+                <img ng-src="img/msg10.jpg">
+                <h2>市民热线咨询农村籍退伍军人政策</h2>
+                <p>农村户口或者退伍时落户农村户籍后转为非农户籍的退伍军人。</p>
+                <p style="margin-top: 13px;text-align: right;font-size: small;">7月20号</p>
+            </a>
+        </div>
+    </ion-content>
+</ion-view>

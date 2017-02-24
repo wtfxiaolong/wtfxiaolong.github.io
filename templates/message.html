@@ -1,0 +1,18 @@
+<ion-header-bar align-title="center" class="bar-stable">
+    <div class="h1 title login-title" >消息</div>
+</ion-header-bar>
+<ion-view>
+    <ion-content has-bouncing="true" overflow-scroll="false">
+        <ion-list>
+            <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap" ng-repeat="item in dataArr" ng-click="askDetail($index)">
+                <img ng-src="img/ask.jpg">
+                <h2>关于退伍领取补助的调查</h2>
+                <p>发起方：武汉武警内部系统</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+                <ion-option-button class="button-assertive" ng-click="remove($index)">
+                    删除
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

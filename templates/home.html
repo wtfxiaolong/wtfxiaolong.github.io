@@ -1,0 +1,125 @@
+<ion-header-bar align-title="center" class="bar-stable">
+    <div class="h1 title login-title" >资讯</div>
+    <button class="button button-icon ion-ios-search" ng-click="search()">
+    </button>
+</ion-header-bar>
+<ion-view>
+    <ion-content has-bouncing="true" overflow-scroll="false">
+        <ion-refresher on-refresh="doRefresh()" pulling-text="下拉刷新" refreshing-text="正在刷新" refreshing-icon="ion-loading-b"></ion-refresher>
+
+        <ion-slide-box active-slide="myActiveSlide"  style="width: 100%;height: 180px;">
+            <ion-slide>
+                <div class="box" style="background-image: url('img/banner1.jpg');background-size: 100% 100%; height: 100%;" ng-click="getDetail()">
+                    <div style="width:100%;height:44px;position:absolute;bottom:0;left:0;background:gray;opacity:0.3;"></div>
+                    <p style="text-align:center;position:absolute;bottom:2px;left:0;color:white;width:100%;">我们退伍了,心一直都在！</p>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="box yellow" style="background-image: url('img/banner2.jpg');background-size: 100% 100%; height: 100%;" ng-click="getDetail()">
+                    <div style="width:100%;height:44px;position:absolute;bottom:0;left:0;background:gray;opacity:0.3;"></div>
+                    <p style="text-align:center;position:absolute;bottom:2px;left:0;color:white;width:100%;">青葱岁月，无所畏惧</p>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="box pink" style="background-image: url('img/banner3.jpg');background-size: 100% 100%; height: 100%;" ng-click="getDetail()">
+                    <div style="width:100%;height:44px;position:absolute;bottom:0;left:0;background:gray;opacity:0.3;"></div>
+                    <p style="text-align:center;position:absolute;bottom:2px;left:0;color:white;width:100%;">视死如归，保家卫国</p>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="box pink" style="background-image: url('img/banner4.jpg');background-size: 100% 100%; height: 100%;" ng-click="getDetail()">
+                    <div style="width:100%;height:44px;position:absolute;bottom:0;left:0;background:gray;opacity:0.3;"></div>
+                    <p style="text-align:center;position:absolute;bottom:2px;left:0;color:white;width:100%;">冰天雪地，艰苦岁月</p>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="box pink" style="background-image: url('img/banner5.jpg');background-size: 100% 100%; height: 100%;">
+                    <div style="width:100%;height:44px;position:absolute;bottom:0;left:0;background:gray;opacity:0.3;"></div>
+                    <p style="text-align:center;position:absolute;bottom:2px;left:0;color:white;width:100%;">我怀念那些困难的日子</p>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+
+        <div class="card" style="margin-top: 10px;margin-bottom:0px;">
+            <a class="item item-thumbnail-left" href="#tab/actMsg">
+                <img ng-src="img/msg1.jpg">
+                <h2>我们退伍了</h2>
+                <p>我们退伍了，可是我们还会一直在努力，服务社会，努力奉献。</p>
+                <p style="margin-top: 13px;text-align: right;font-size: small;">10月30号</p>
+            </a>
+        </div>
+        <div class="card" style="margin-top: 10px;margin-bottom:0px;">
+            <a class="item item-thumbnail-left" href="#tab/actMsg">
+                <img ng-src="img/msg2.jpg">
+                <h2>关于退伍证的领取事项</h2>
+                <p>退伍是光荣的日子，我们领取的退伍证件，需要注意的事项。</p>
+                <p style="margin-top: 13px;text-align: right;font-size: small;">10月29号</p>
+            </a>
+        </div>
+        <div class="card" style="margin-top: 10px;margin-bottom:0px;">
+            <a class="item item-thumbnail-left" href="#tab/actMsg">
+                <img ng-src="img/msg3.jpg">
+                <h2>关于退伍创业</h2>
+                <p>部队和部分地方企业协商，给广大官兵提供再创业机会扶持。</p>
+                <p style="margin-top: 13px;text-align: right;font-size: small;">10月27号</p>
+            </a>
+        </div>
+        <div class="card" style="margin-top: 10px;margin-bottom:0px;">
+            <a class="item item-thumbnail-left" href="#tab/actMsg">
+                <img ng-src="img/msg4.jpg">
+                <h2>退伍新政策</h2>
+                <p>新政策改革，退伍的人民子弟兵，能领取享受到新的福利。</p>
+                <p style="margin-top: 13px;text-align: right;font-size: small;">10月25号</p>
+            </a>
+        </div>
+        <div class="card" style="margin-top: 10px;margin-bottom:0px;">
+            <a class="item item-thumbnail-left" href="#tab/actMsg">
+                <img ng-src="img/msg5.jpg">
+                <h2>优秀的退伍企业家</h2>
+                <p>退伍军人就业专场招聘会,58家企业提供近1200个工作岗位。</p>
+                <p style="margin-top: 13px;text-align: right;font-size: small;">10月23号</p>
+            </a>
+        </div>
+        <div class="card" style="margin-top: 10px;margin-bottom:0px;">
+            <a class="item item-thumbnail-left" href="#tab/actMsg">
+                <img ng-src="img/msg6.jpg">
+                <h2>关于优秀退伍兵名的福利</h2>
+                <p>对于优秀退伍军人，我们会单独提供优秀资格证书，注意事项。</p>
+                <p style="margin-top: 13px;text-align: right;font-size: small;">9月2号</p>
+            </a>
+        </div>
+        <div class="card" style="margin-top: 10px;margin-bottom:0px;">
+            <a class="item item-thumbnail-left" href="#tab/actMsg">
+                <img ng-src="img/msg7.jpg">
+                <h2>退伍再就业的指导</h2>
+                <p>退役后,如何才能顺利走上工作岗位,这一直是广大退役战士和他们家人比较关心的话题。</p>
+                <p style="margin-top: 13px;text-align: right;font-size: small;">8月29号</p>
+            </a>
+        </div>
+        <div class="card" style="margin-top: 10px;margin-bottom:0px;">
+            <a class="item item-thumbnail-left" href="#tab/actMsg">
+                <img ng-src="img/msg8.jpg">
+                <h2>退伍新政策改革243</h2>
+                <p>2016军队|部队改革方案新政策:退伍军人养老保险让你无忧</p>
+                <p style="margin-top: 13px;text-align: right;font-size: small;">7月28号</p>
+            </a>
+        </div>
+        <div class="card" style="margin-top: 10px;margin-bottom:0px;">
+            <a class="item item-thumbnail-left" href="#tab/actMsg">
+                <img ng-src="img/msg9.jpg">
+                <h2>“退伍老兵”王三乐</h2>
+                <p>不忘乡邻,回报故土,二十年他用爱心传递真情。</p>
+                <p style="margin-top: 13px;text-align: right;font-size: small;">7月27号</p>
+            </a>
+        </div>
+        <div class="card" style="margin-top: 10px;margin-bottom:0px;">
+            <a class="item item-thumbnail-left" href="#tab/actMsg">
+                <img ng-src="img/msg10.jpg">
+                <h2>市民热线咨询农村籍退伍军人政策</h2>
+                <p>农村户口或者退伍时落户农村户籍后转为非农户籍的退伍军人。</p>
+                <p style="margin-top: 13px;text-align: right;font-size: small;">7月20号</p>
+            </a>
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,43 @@
+<ion-header-bar align-title="center" class="bar-stable">
+    <div class="buttons">
+        <button class="button button-icon ion-ios-arrow-left" ng-click="$ionicGoBack()">
+        </button>
+    </div>
+    <div class="h1 title login-title" >问卷调查</div>
+</ion-header-bar>
+<ion-view>
+    <ion-content>
+    	 <div class="list card" ng-if="type=='checkbox'">
+            <div class="item item-body">
+                <h2 class="dm-nowrap-2">以下人能得到特殊对待吗？</h2>
+            </div>
+            <div class="item" style="padding:0;">
+			 	<ion-checkbox ng-model="filter.one">伤残退伍人员</ion-checkbox>
+			 	<ion-checkbox ng-model="filter.two">延迟退伍人员</ion-checkbox>
+				<ion-checkbox ng-model="filter.three">农村户口人员</ion-checkbox>
+				<ion-checkbox ng-model="filter.four">城市户口人员</ion-checkbox>
+			</div>
+
+            <button class="button button-dark" ng-click="next()" style="width:40%;margin-left:30%;margin-top:10px;margin-bottom:10px;">
+              下一题
+            </button>
+        </div>
+
+    	 <div class="list card" ng-if="type=='radio'">
+            <div class="item item-body">
+                <h2 class="dm-nowrap-2">你觉得你能接受一次性心理预期补贴范围是：</h2>
+            </div>
+            <div class="item" style="padding:0;">
+                <ion-radio ng-model="choice" ng-value="'A'">5W～10W</ion-radio>
+                <ion-radio ng-model="choice" ng-value="'B'">10W～20W</ion-radio>
+                <ion-radio ng-model="choice" ng-value="'c'">20W～30W</ion-radio>
+                <ion-radio ng-model="choice" ng-value="'d'">30W以上</ion-radio>
+			</div>
+
+            <button class="button button-dark" ng-click="next()" style="width:40%;margin-left:30%;margin-top:10px;margin-bottom:10px;">
+              完成
+            </button>
+        </div>
+
+    </ion-content>
+</ion-view>
