@@ -1,32 +1,105 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+<head>
+	<title>Printer</title>
+	<link rel="shortcut icon" href="favicon.ico" sizes="32x32" />
+	<link rel="shortcut icon" href="/images/cropped-IE-Money-Favicon-192x192.png" sizes="192x192" />
+	<link rel="stylesheet" type="text/css" href="lib/amazeui/css/amazeui.min.css">
+	<link rel="stylesheet" type="text/css" href="lib/amazeui/css/amazeui.flat.min.css">
+</head>
+<body>
+	<div style="width: 640px;margin-left: auto;margin-right: auto;margin-top: 100px;">
+		<select id="target-option" data-am-selected="{btnWidth: '%', btnSize: 'sm', btnStyle: 'secondary'}">
+		  <option value="NZD/RMB">NZD/RMB</option>
+		  <option value="NZD/AUD">NZD/AUD</option>
+		  <option value="NZD/USD">NZD/USD</option>
+		  <option value="AUD/RMB">AUD/RMB</option>
+		</select>
+		<div style="height: 22px;"></div>
+		<div class="am-input-group">
+		  <span class="am-input-group-label">#</span>
+		  <input type="text" id="target" class="am-form-field" placeholder="如果没有，就自己输入，例如：“NZD/RMB”">
+		</div>
+		<div style="height: 22px;"></div>
+		<div class="am-input-group">
+		  <span class="am-input-group-label">$</span>
+		  <input type="text" id="rate" class="am-form-field" placeholder="输入汇率，例如：“4.7344/4.8374”">
+		</div>
+		<button type="button" id="add" style="margin-top: 20px;" class="am-btn am-btn-secondary">添加行</button>
+	</div>
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+	<div id="canvas" style="width: 640px;margin-left: auto;margin-right: auto;margin-top: 64px;position: relative;background:url(images/background.jpg);background-size:100% 100%;">
+		<img src="images/IE-Money-logo-white.png" style="width: 80%;margin-left: 10%;margin-top: 44px;">
+		<ul class="am-avg-sm-2 boxes" id="board" style="text-align: center;margin-top: 64px;color: white;position: relative;height: 220px;">
+		  <li class="box" style="font-weight:bold;color: gold;height: 36px;font-size: 22px;">货币对</li>
+		  <li class="box" style="font-weight:bold;color: gold;height: 36px;font-size: 22px;">买卖价</li>
+		</ul>
+		<p style="position: absolute;font-style:italic;bottom: 20px;color: white;text-align: center;width: 100%;"><span id="date-element"></span> 实时汇率<br/>添加IE MONEY客服为好友 咨询更多</p>
+	</div>
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
+	<button type="button" id="output" class="am-btn am-btn-secondary" style="margin-left: 35%;width: 30%;margin-bottom: 64px;margin-top: 44px;">生成图片</button>
 
-    <!-- ionic/angularjs js -->
-    <!--<script src="lib/ionic/js/ionic.bundle.js"></script>-->
-    <!--<script src="lib/ngCordova/dist/ng-cordova.js"></script>-->
 
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
-  </head>
-  <body>
-    <!--
-      The views will be rendered in the <ion-nav-view> directive below
-      Templates are in the /templates folder (but you could also
-      have templates inline in this html file if you'd like).
-    -->
-    <ion-nav-view></ion-nav-view>
-    <script type="text/javascript" src="lib/echarts/echarts.min.js"></script>
-    <script data-main="js/require-config.js" src="lib/requirejs/require.js"></script>
-  </body>
+	<script type="text/javascript" src="lib/jquery/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="lib/amazeui/js/amazeui.min.js"></script>
+	<script type="text/javascript" src="lib/html2canvas.js"></script>
+
+	<script type="text/javascript">
+		$("#add").on("click", function(e) {
+			var target = $("#target").val() ? $("#target").val() : $("#target-option").val();
+			var rate = $("#rate").val();
+			if (!target) return;
+			if (!rate) return;
+			var appendHtml = "<li class=\"box\" style=\"height:32px;font-size: 20px;\">"+target+"</li>"+
+		  "<li class=\"box\" style=\"height:32px;font-size: 20px;\">"+rate+"</li>";
+			$("#board").append(appendHtml);
+
+			$("ul").height($("li").length/2*32+4+64);
+		});
+		function CurentTime() { 
+	        var now = new Date();
+	       
+	        var year = now.getFullYear();       //年
+	        var month = now.getMonth() + 1;     //月
+	        var day = now.getDate();            //日
+	       
+	        var hh = now.getHours();            //时
+	        var mm = now.getMinutes();          //分
+	       
+	        var clock = year + "/";
+	       
+	        if(month < 10)
+	            clock += "0";
+	       
+	        clock += month + "/";
+	       
+	        if(day < 10)
+	            clock += "0";
+	           
+	        clock += day + " ";
+	       
+	        if(hh < 10)
+	            clock += "0";
+	           
+	        clock += hh + ":";
+	        if (mm < 10) clock += '0'; 
+	        clock += mm; 
+	        return(clock); 
+	    }
+	    $('#date-element').append(CurentTime());
+
+	    $("#output").on('click', function(e){
+	    	html2canvas($('#canvas'), {
+			  onrendered: function(canvas) {
+			    document.body.appendChild(canvas);
+			        var a = document.createElement('a');
+			        // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
+			        a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+			        a.download = 'xiaoshanhaopiaoliang.png';
+			        a.click();
+			    }
+			});
+	    });
+	</script>
+</body>
 </html>
