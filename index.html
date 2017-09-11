@@ -29,7 +29,7 @@
 	</div>
 
 	<div id="canvas" style="width: 640px;margin-left: auto;margin-right: auto;margin-top: 64px;position: relative;background:url(images/background.jpg);background-size:100% 100%;">
-		<img src="images/IE-Money-logo-white.png" style="width: 80%;margin-left: 10%;margin-top: 44px;">
+		<img src="images/IE-Money-logo-white.png" style="width: 58%;margin-left: 21%;margin-top: 44px;">
 		<ul class="am-avg-sm-2 boxes" id="board" style="text-align: center;margin-top: 64px;color: white;position: relative;height: 220px;">
 		  <li class="box" style="font-weight:bold;color: gold;height: 36px;font-size: 22px;">货币对</li>
 		  <li class="box" style="font-weight:bold;color: gold;height: 36px;font-size: 22px;">买卖价</li>
@@ -50,8 +50,8 @@
 			var rate = $("#rate").val();
 			if (!target) return;
 			if (!rate) return;
-			var appendHtml = "<li class=\"box\" style=\"height:32px;font-size: 20px;\">"+target+"</li>"+
-		  "<li class=\"box\" style=\"height:32px;font-size: 20px;\">"+rate+"</li>";
+			var appendHtml = "<li class=\"box\" style=\"height:32px;font-size: 28px;\">"+target+"</li>"+
+		  "<li class=\"box\" style=\"height:32px;font-size: 28px;\">"+rate+"</li>";
 			$("#board").append(appendHtml);
 
 			$("ul").height($("li").length/2*32+4+64);
