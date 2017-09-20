@@ -27,6 +27,12 @@
 		</div>
 		<button type="button" id="add" style="margin-top: 20px;" class="am-btn am-btn-secondary">添加行</button>
 		<button type="button" id="background" style="margin-top: 20px;margin-left: 44px;" class="am-btn am-btn-secondary">切换背景</button>
+		<div style="height: 22px;"></div>
+		<div class="am-input-group">
+		  <span class="am-input-group-label">$</span>
+		  <input type="text" id="time" class="am-form-field" placeholder="billy,这里输入时间...">
+		</div>
+		<button type="button" id="add-time" style="margin-top: 20px;" class="am-btn am-btn-secondary">修改时间</button>
 	</div>
 
 	<div id="canvas" style="width: 640px;margin-left: auto;margin-right: auto;margin-top: 64px;position: relative;background:url(images/background.jpg);background-size:100% 100%;">
@@ -78,7 +84,7 @@
 	    $('#date-element').append(CurentTime());
 
 	    $("#background").on('click', function(){
-	    	var rand = Math.floor(Math.random() * 8) + 1;
+	    	var rand = Math.floor(Math.random() * 9) + 1;
 
 	    	$('#canvas').css('background', 'url(images/pic0'+rand+'.jpg)');
 	    	$('#canvas').css('background-size', '100% 100%');
@@ -95,6 +101,11 @@
 			        a.click();
 			    }
 			});
+	    });
+
+	    $("#add-time").on('click', function(e){
+			var time = $("#time").val();
+			$('#date-element').html(time);
 	    });
 	</script>
 </body>
