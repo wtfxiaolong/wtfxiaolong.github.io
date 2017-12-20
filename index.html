@@ -129,7 +129,7 @@
 	    		}
 
 	    		for (var i = 0; i < 4; i++) {
-    				var target = $("#target").val() ? $("#target").val() : $("#target-option").val();
+    				var target = item[i]['symbol'];
 					var rate = item[i]['bid'] + '/' + item[i]['ask'];
 					if (!target) return;
 					if (!rate) return;
