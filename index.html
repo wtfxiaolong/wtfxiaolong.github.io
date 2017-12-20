@@ -9,10 +9,11 @@
 </head>
 <body>
 	<div style="width: 640px;margin-left: auto;margin-right: auto;margin-top: 100px;">
+		<button type="button" id="generate" style="margin-top: 20px;" class="am-btn am-btn-success">一键生成(晓珊每日专用)</button><br/><hr>
 		<select id="target-option" data-am-selected="{btnWidth: '%', btnSize: 'sm', btnStyle: 'secondary'}">
 		  <option value="NZD/RMB">NZD/RMB</option>
-		  <option value="NZD/AUD">NZD/AUD</option>
 		  <option value="NZD/USD">NZD/USD</option>
+		  <option value="NZD/AUD">NZD/AUD</option>
 		  <option value="AUD/RMB">AUD/RMB</option>
 		</select>
 		<div style="height: 22px;"></div>
@@ -107,6 +108,39 @@
 			var time = $("#time").val();
 			$('#date-element').html(time);
 	    });
+
+	    $('#generate').on('click', function(e){
+	    	$.get('http://dev.myaccount.iemoney.co.nz/remittance/realtime_rate_web', function(re){
+	    		var result = JSON.parse(re);
+	    		var item = {};
+	    		for (var i = result.length - 1; i >= 0; i--) {
+	    			if (result[i]['symbol'] == "AUDCNY") {
+	    				item[0] = result[i];
+	    			} else if (result[i]['symbol'] == "AUDUSD") {
+	    				item[1] = result[i];
+	    			} else if (result[i]['symbol'] == "NZDAUD") {
+	    				item[2] = result[i];
+	    			} else if (result[i]['symbol'] == "NZDCNY") {
+	    				item[3] = result[i];
+	    			}
+	    		}
+
+	    		for (var i = 0; i < 4; i++) {
+    				var target = $("#target").val() ? $("#target").val() : $("#target-option").val();
+					var rate = item[i]['bid'] + '/' + item[i]['ask'];
+					if (!target) return;
+					if (!rate) return;
+					var appendHtml = "<li class=\"box\" style=\"height:32px;font-size: 28px;\">"+target+"</li>"+
+				  		"<li class=\"box\" style=\"height:32px;font-size: 28px;\">"+rate+"</li>";
+					$("#board").append(appendHtml);
+
+					$("ul").height($("li").length/2*32+4+72);
+	    		}
+
+	    	});
+	    });
+
+
 	</script>
 </body>
 </html>
